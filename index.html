@@ -2,47 +2,150 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>For Anu 💖</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Surprise for Anu</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Basic styles */
+        .hidden {
+            display: none;
+        }
+
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid #ff4785;
+            white-space: nowrap;
+            display: inline-block;
+            animation: typewriter 3s steps(30) 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes typewriter {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        .fadeInEffect {
+            animation: fadeIn 2s ease-in-out forwards;
+        }
+
+        .hoverEffect:hover {
+            color: #ff4785;
+            transform: scale(1.1);
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .photo-border {
+            border-radius: 50%;
+            border: 4px solid #ff4785;
+            padding: 5px;
+        }
+
+        .photo-hover:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+
+        .bg-gradient-card {
+            background: linear-gradient(to bottom right, #ffddc1, #d0e4ff);
+        }
+    </style>
 </head>
 
-<body
-    class="flex items-center justify-center min-h-screen bg-gradient-to-br from-pink-300 via-rose-200 to-indigo-300 p-4">
+<body class="bg-gray-100">
 
-    <div
-        class="bg-white rounded-3xl shadow-2xl max-w-md w-full text-center p-6 relative overflow-hidden border-4 border-pink-400 transform hover:scale-105 transition duration-500">
-
-        <!-- Decorative floating hearts with sparkles -->
-        <div class="absolute -top-4 -left-4 text-pink-300 text-5xl animate-pulse">💕</div>
-        <div class="absolute -bottom-4 -right-4 text-pink-300 text-5xl animate-bounce">💖</div>
-        <div class="absolute top-0 right-0 text-xl text-yellow-200 animate-ping">✨</div>
-
-        <!-- Two Photos Row (Updated size) with hover effect -->
-        <div class="flex justify-center gap-4 mb-4">
-            <div
-                class="w-32 h-32 rounded-xl overflow-hidden border-4 border-pink-400 shadow-lg hover:shadow-2xl transform hover:scale-110 transition duration-300">
-                <img src="./assets/images/anu1.jpeg" alt="Anu 1" class="w-full h-full object-cover" />
-            </div>
-            <div
-                class="w-32 h-32 rounded-xl overflow-hidden border-4 border-pink-400 shadow-lg hover:shadow-2xl transform hover:scale-110 transition duration-300">
-                <img src="./assets/images/anu2.jpeg" alt="Anu 2" class="w-full h-full object-cover" />
-            </div>
+    <!-- Front Page (Initially visible) -->
+    <div id="front-page" class="flex justify-center items-center min-h-screen">
+        <div
+            class="bg-gradient-to-br from-pink-200 via-blue-100 to-yellow-300 w-full max-w-md p-6 rounded-lg shadow-xl text-center">
+            <h1 class="text-2xl text-pink-600 font-bold mb-4">Sorry, this idea didn't come earlier! 😅</h1>
+            <p class="text-lg text-gray-700 mb-6">But here it is now, and I hope you'll love it! ❤️</p>
+            <button id="show-card-btn"
+                class="bg-pink-500 text-white px-6 py-3 rounded-lg hover:bg-pink-600 transition duration-300">
+                Click to see Birthday Card
+            </button>
         </div>
-
-        <h2 class="text-2xl font-bold text-pink-700 mb-2 animate__animated animate__fadeIn">For My Anu 🌸</h2>
-
-        <p class="text-gray-600 text-sm mb-2 animate__animated animate__fadeIn animate__delay-1s">
-            Yrr Anu, tum badi hi cute ho 💗 and ye cuteness tag toh sirf tere liye hi bna hai 🫣<br>
-            Kya koi itna khubsurat bhi ho sakta hai? Tum dekh ke lagta hai — haan, ho sakta hai 😍<br>
-            Har smile teri ek magic lagti hai ✨<br>
-            Style, attitude, sweetness — sab kuch ekdum Queen jaisa 👑<br>
-            Aur sach kahun, Anu sirf ek naam nahi… ek ehsaas hai — ek Queen jaisa noor 💞
-        </p>
-
-        <p class="text-pink-500 font-semibold mt-4 animate__animated animate__fadeIn animate__delay-2s">— Nupur 💌</p>
     </div>
+
+    <!-- Birthday Card (Initially hidden) -->
+    <div id="birthday-card" class="hidden flex justify-center items-center min-h-screen">
+        <div class="bg-gradient-card w-full max-w-md p-6 rounded-lg shadow-xl relative">
+
+            <!-- Title with typewriter effect -->
+            <h1 id="main-title" class="text-3xl text-pink-600 font-bold text-center mb-4 typewriter"></h1>
+
+            <!-- Photo Section -->
+            <div class="flex justify-center mb-4">
+                <img src="./assets/images/anu1.jpeg" alt="Anu's Photo"
+                    class="photo-border photo-hover w-32 h-32 object-cover mb-4">
+            </div>
+
+            <!-- Text content with fading effect -->
+            <div id="message" class="text-xl text-center text-gray-700 mb-4 fadeInEffect"></div>
+
+            <!-- Footer Section -->
+            <div id="footer" class="text-xl font-bold text-pink-600 text-center mt-6 fadeInEffect"></div>
+            <div id="footer2" class="text-lg text-center text-gray-600 fadeInEffect"></div>
+
+            <button id="back-to-front"
+                class="bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition duration-300 mt-6">
+                Back to Front Page
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to handle button click
+        document.addEventListener("DOMContentLoaded", function () {
+            const title = "🎉 Happy Birthday, Anu Urf Cutie! 🎂🎈✨";
+            const message = `
+        Aage tere baare me kya hi likhu, tu ek number hai, matlab gazab hai 🤌🔥 and meri favorite bhi! 💖<br>
+        I wish ki tujhe jo bhi chahiye life me, wo sab kuch mile, aur unexpected cheezein bhi—jaise ki apun 🫣.<br>
+        Aur wo jo tu pyaar se apna cute look deti hai na 🥺, thoda kam diya kar, usme tu zyada cute lagti hai! 😂😂<br>
+        I hope teri cute si smile hamesha bani rahe 😊✨, tu hamesha khush rahe, aur apna ek saal ka proper contract bhi yaad rahe! 😂📜<br>
+        Starting me jab tujse baat ki thi, tab pata nahi tha tu itni special ban jayegi mere liye... aur tere liye wish likhne ke liye itni mehnat karni padegi! 😂💀<br>
+        Baaki, starting aur ending with chocolate... haaye 🍫🫣🫠.<br>
+        Mujhe abhi bhi nahi samajh aaya ki koi itna khubsurat kaise ho sakta hai—matlab HOW?! 🫣😲💘.<br>
+        Aur teri ye chhoti-moti baaton par kalesh karne ki aadat... haaye, badi mast hai! 😂🔥<br>
+        Jab tu kehti hai 'Jaa jaa, unke hi dukh sun le!'—haaye 🫣😂, mazza aata hai tujhe chedne me! 🤭😈
+      `;
+            const footer1 = "Ye message from your one and only Praja—👑 Rani ji! 😅";
+            const footer2 = "Teri eklauti praja, jo kisi ko laga 3 vibhag me bant gayi, but aisa nahi hoga re... praja is LOYAL towards Rani! 🫡😂💖";
+
+            // Set text content dynamically
+            document.getElementById("main-title").textContent = title;
+            document.getElementById("message").innerHTML = message;
+            document.getElementById("footer").textContent = footer1;
+            document.getElementById("footer2").textContent = footer2;
+
+            // Button click event to show the card
+            document.getElementById("show-card-btn").addEventListener("click", function () {
+                document.getElementById("front-page").classList.add("hidden");
+                document.getElementById("birthday-card").classList.remove("hidden");
+            });
+
+            // Button click event to go back to the front page
+            document.getElementById("back-to-front").addEventListener("click", function () {
+                document.getElementById("birthday-card").classList.add("hidden");
+                document.getElementById("front-page").classList.remove("hidden");
+            });
+        });
+    </script>
 
 </body>
 
